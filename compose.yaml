@@ -1,0 +1,11 @@
+services:
+  php-fpm:
+    build: docker/php
+    ports:
+      - 9000:9000
+    volumes:
+      - ./php-src:/php-src
+      - ./app:/app
+    working_dir: /php-src
+    cap_add:
+      - SYS_PTRACE
