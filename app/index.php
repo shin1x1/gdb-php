@@ -1,10 +1,12 @@
 <?php
-function foo(string $s): void {
-    if (strlen($s) > 0) {
-        echo $s, PHP_EOL;
-    }
-}
+require_once __DIR__ . '/function.php';
+require_once __DIR__ . '/class.php';
 
-$a = "Hello";
-foo($a);
+$strings = to_lower(['Hello', 'Wolrd']);
+var_dump($strings);
+
+$o = new Foo(100, 'name');
+var_dump($o->getName());
+var_dump($o->getUpperName());
+
 echo "end\n";
