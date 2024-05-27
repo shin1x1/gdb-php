@@ -19,6 +19,7 @@ RUN apt-get update \
 
 COPY ./gdb/local-gdbinit /root/.local_gdbinit
 COPY ./php-fpm/php-fpm.conf /root/php-fpm.conf
+COPY ./gdb-php-fpm-worker.sh /root/gdb-php-fpm-worker.sh
 
 RUN wget -P ~ https://github.com/cyrus-and/gdb-dashboard/raw/master/.gdbinit \
     && echo "add-auto-load-safe-path /php-src/.gdbinit" >> ~/.gdbinit \

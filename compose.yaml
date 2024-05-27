@@ -7,5 +7,6 @@ services:
       - ./php-src:/php-src
       - ./app:/app
     working_dir: /php-src
+    command: /php-src/php/sbin/php-fpm
     cap_add:
       - SYS_PTRACE
