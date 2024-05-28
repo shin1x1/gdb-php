@@ -2,6 +2,7 @@ cd /php-src
 
 test -d php && rm -rf php
 mkdir php
+make clean
 
 ./buildconf
 ./configure --prefix=/php-src/php --disable-all --disable-cgi --disable-phpdbg --enable-fpm --enable-debug --enable-opcache
