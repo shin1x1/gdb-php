@@ -31,6 +31,10 @@ send-fcgi:
 gdb-php:
 	docker compose run --rm php-fpm gdb /php-src/php/bin/php
 
+.PHONY: dump-opcode
+dump-opcode:
+	docker compose run --rm php-fpm /php-src/php/bin/php -d zend_extension=opcache.so -d opcache.enable_cli=1 -d opcache.opt_debug_level=0x10000 /app/index.php
+
 .PHONY: clean
 clean:
 	#docker compose run --rm php-fpm make clean
