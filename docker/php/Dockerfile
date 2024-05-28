@@ -25,5 +25,5 @@ RUN wget -P ~ https://github.com/cyrus-and/gdb-dashboard/raw/master/.gdbinit \
     && echo "add-auto-load-safe-path /php-src/.gdbinit" >> ~/.gdbinit \
     && echo "source ~/.local_gdbinit" >> ~/.gdbinit
 
-RUN echo "export PATH=$PATH:/php-src/php/bin:/php-src/php/sbin" >> ~/.bashrc
+RUN echo 'export PATH=/php-src/php/bin:/php-src/php/sbin:$PATH' >> ~/.bashrc
 
