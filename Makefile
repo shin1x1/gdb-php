@@ -1,9 +1,14 @@
+# ignore error if .env file does not exists
+-include .env
+
 .PHONY: install
-install: setup
+install:
+	test -f .env || cp -a .env.example .env
+	make setup # re-include .env
 
 .PHONY: setup
 setup:
-	test -d php-src || git clone https://github.com/php/php-src.git --branch=PHP-8.3 php-src
+	test -d php-src || git clone https://github.com/php/php-src.git --branch=${PHP_BRANCH} php-src
 	test -f php-src/php/bin/php || make build
 
 .PHONY: build

@@ -6,6 +6,8 @@ services:
     volumes:
       - ./php-src:/php-src
       - ./app:/app
+    environment:
+      CONFIGURE_OPTIONS: ${CONFIGURE_OPTIONS}
     working_dir: /php-src
     command: /php-src/php/sbin/php-fpm
     cap_add:

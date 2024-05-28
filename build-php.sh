@@ -5,7 +5,7 @@ mkdir php
 make clean
 
 ./buildconf
-./configure --prefix=/php-src/php --disable-all --disable-cgi --disable-phpdbg --enable-fpm --enable-debug --enable-opcache
-make
+./configure --prefix=/php-src/php ${CONFIGURE_OPTIONS}
+make -j $(grep -c processor /proc/cpuinfo)
 make install
 cp -a ~/php-fpm.conf /php-src/php/etc/php-fpm.conf
