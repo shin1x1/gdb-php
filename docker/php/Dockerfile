@@ -18,6 +18,7 @@ RUN apt-get update \
         gdb
 
 COPY ./gdb/local-gdbinit /root/.local_gdbinit
+COPY ./gdb/.gdbinit.d /root/.gdbinit.d
 COPY ./php-fpm/php-fpm.conf /root/php-fpm.conf
 COPY ./gdb-php-fpm-worker.sh /root/gdb-php-fpm-worker.sh
 
