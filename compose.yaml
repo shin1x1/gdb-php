@@ -12,3 +12,12 @@ services:
     command: /php-src/php/sbin/php-fpm
     cap_add:
       - SYS_PTRACE
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: app
+volumes:
+  mysql_data:
