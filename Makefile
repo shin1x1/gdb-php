@@ -1,6 +1,8 @@
 # ignore error if .env file does not exists
 -include .env
 
+GIT_OPTION ?=
+
 .PHONY: install
 install:
 	test -f .env || cp -a .env.example .env
@@ -8,7 +10,7 @@ install:
 
 .PHONY: setup
 setup:
-	test -d php-src || git clone https://github.com/php/php-src.git --branch=${PHP_BRANCH} php-src
+	test -d php-src || git clone https://github.com/php/php-src.git --branch=${PHP_BRANCH} php-src $(GIT_OPTION)
 	test -f php-src/php/bin/php || make build
 
 .PHONY: build

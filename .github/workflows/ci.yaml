@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: make
+      - run: make GIT_OPTION=--depth=1
 
       - run: docker compose run --rm php-fpm /php-src/php/bin/php -v
 
