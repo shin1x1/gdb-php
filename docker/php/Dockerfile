@@ -10,6 +10,12 @@ RUN apt-get update \
         pkg-config \
         git \
         libfcgi-bin \
+        zlib1g-dev \
+        libzip-dev \
+        libonig-dev \
+        libxml2-dev \
+        libssl-dev \
+        libsqlite3-dev \
         strace \
         procps \
         vim \

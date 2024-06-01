@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 cd /php-src
 
 test -d php && rm -rf php
