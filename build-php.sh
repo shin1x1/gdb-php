@@ -6,7 +6,8 @@ cd /php-src
 
 test -d php && rm -rf php
 mkdir php
-make clean
+
+test -f Makefile && make clean
 
 ./buildconf
 ./configure --prefix=/php-src/php ${CONFIGURE_OPTIONS}

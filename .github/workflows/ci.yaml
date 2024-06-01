@@ -1,0 +1,13 @@
+name: CI
+on: [push]
+
+jobs:
+  build-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: make GIT_OPTION=--depth=1
+
+      - run: docker compose run --rm php-fpm /php-src/php/bin/php -v
+
