@@ -11,3 +11,6 @@ jobs:
 
       - run: docker compose run --rm php-fpm /php-src/php/bin/php -v
 
+      - run: make dump-opcode
+      - run: make dump-ast
+
