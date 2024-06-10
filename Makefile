@@ -47,7 +47,7 @@ gdb-php:
 
 .PHONY: dump-opcode
 dump-opcode:
-	docker compose run --rm php-fpm /php-src/php/bin/php -d zend_extension=opcache.so -d opcache.enable_cli=1 -d opcache.opt_debug_level=0x10000 /app/index.php
+	docker compose run --rm php-fpm /php-src/php/bin/php -d zend_extension=opcache.so  -d opcache.enable_cli=1 -d opcache.opt_debug_level=0x10000 -r 'opcache_compile_file("/app/index.php");'
 
 .PHONY: dump-ast
 dump-ast:
