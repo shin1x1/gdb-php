@@ -1,4 +1,12 @@
 services:
+  nginx:
+    image: nginx:1.26
+    ports:
+      - '8000:80'
+    volumes:
+      - ./app:/app
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
   php-fpm:
     build: docker/php
     ports:
