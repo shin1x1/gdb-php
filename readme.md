@@ -470,6 +470,61 @@ end
 >>> c
 ```
 
+### PHP コードの AST をダンプ
+
+`make dump-ast` コマンドを実行すると、`./app/index.php` の AST をダンプします。
+
+```shell
+$ make dump-ast
+AST_STMT_LIST
+    0: AST_FUNC_DECL
+        name: "foo"
+        docComment: null
+        params: AST_PARAM_LIST
+        stmts: AST_STMT_LIST
+            0: AST_CALL
+                expr: AST_NAME
+                    flags: NAME_NOT_FQ (1)
+                    name: "var_dump"
+                args: AST_ARG_LIST
+                    0: "hoge"
+        returnType: null
+        attributes: null
+        __declId: 0
+    1: AST_CALL
+        expr: AST_NAME
+            flags: NAME_NOT_FQ (1)
+            name: "foo"
+        args: AST_ARG_LIST
+```
+
+### PHP コードのオペコードをダンプ
+
+`make dump-opcode` コマンドを実行すると、`./app/index.php` のオペコードをダンプします。ここで出力されるものは最適化前のものです。（opcache.opt_debug_level=0x10000）
+
+```shell
+$ make dump-opcode
+
+$_main:
+     ; (lines=3, args=0, vars=0, tmps=1)
+     ; (before optimizer)
+     ; /app/index.php:1-7
+     ; return  [] RANGE[0..0]
+0000 INIT_FCALL 0 96 string("foo")
+0001 DO_UCALL
+0002 RETURN int(1)
+
+foo:
+     ; (lines=4, args=0, vars=0, tmps=1)
+     ; (before optimizer)
+     ; /app/index.php:3-5
+     ; return  [] RANGE[0..0]
+0000 INIT_FCALL 1 96 string("var_dump")
+0001 SEND_VAL string("hoge") 1
+0002 DO_ICALL
+0003 RETURN null
+```
+
 ## 設定
 
 .env には下記の設定項目があります。必要に応じて変更してください。
