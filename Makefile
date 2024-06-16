@@ -49,6 +49,11 @@ gdb-php:
 dump-opcode:
 	@docker compose run --rm php-fpm /php-src/php/bin/php -d zend_extension=opcache.so  -d opcache.enable_cli=1 -d opcache.opt_debug_level=0x10000 -r 'opcache_compile_file("/app/index.php");'
 
+.PHONY: dump-opcode-optimized
+dump-opcode-optimized:
+	@docker compose run --rm php-fpm /php-src/php/bin/php -d zend_extension=opcache.so  -d opcache.enable_cli=1 -d opcache.opt_debug_level=0x20000 -r 'opcache_compile_file("/app/index.php");'
+
+
 .PHONY: dump-ast
 dump-ast:
 	@docker compose run --rm php-fpm /php-src/php/bin/php -d extension=ast.so -r 'require "/php-src/php/lib/php/doc/ast/util.php"; echo ast_dump(ast\parse_file("/app/index.php", 100)), PHP_EOL;'
