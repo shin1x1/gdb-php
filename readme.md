@@ -525,6 +525,36 @@ foo:
 0003 RETURN null
 ```
 
+`make dump-opcode-optimized` コマンドを実行すると、最適化されたオペコードを出力します。出力対象の PHP ファイルは `make dump-opcode` と同じです。
+
+```shell
+$ cat ./app/index.php
+<?php
+
+if (false) {
+    echo 'Hello' . '!!';
+}
+
+$ make dump-opcode
+
+$_main:
+     ; (lines=3, args=0, vars=0, tmps=0)
+     ; (before optimizer)
+     ; /app/index.php:1-7
+     ; return  [] RANGE[0..0]
+0000 JMPZ bool(false) 0002
+0001 ECHO string("Hello!!")
+0002 RETURN int(1)
+
+$ make dump-opcode-optimized
+
+$_main:
+     ; (lines=1, args=0, vars=0, tmps=0)
+     ; (after optimizer)
+     ; /app/index.php:1-7
+0000 RETURN int(1)
+```
+
 ## 設定
 
 .env には下記の設定項目があります。必要に応じて変更してください。
