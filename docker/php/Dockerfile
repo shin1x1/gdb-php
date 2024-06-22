@@ -16,6 +16,7 @@ RUN apt-get update \
         libxml2-dev \
         libssl-dev \
         libsqlite3-dev \
+        systemtap-sdt-dev \
         strace \
         procps \
         vim \
