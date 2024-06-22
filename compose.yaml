@@ -16,6 +16,7 @@ services:
       - ./app:/app
     environment:
       CONFIGURE_OPTIONS: ${CONFIGURE_OPTIONS}
+      USE_ZEND_DTRACE: 1
     working_dir: /php-src
     command: /php-src/php/sbin/php-fpm
     cap_add:
