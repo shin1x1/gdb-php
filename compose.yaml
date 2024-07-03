@@ -16,10 +16,12 @@ services:
       - ./app:/app
     environment:
       CONFIGURE_OPTIONS: ${CONFIGURE_OPTIONS}
+      USE_ZEND_DTRACE: 1
     working_dir: /php-src
     command: /php-src/php/sbin/php-fpm
     cap_add:
       - SYS_PTRACE
+      - CAP_SYS_ADMIN
   mysql:
     image: mysql:8.0
     volumes:
@@ -29,3 +31,4 @@ services:
       MYSQL_DATABASE: app
 volumes:
   mysql_data:
+

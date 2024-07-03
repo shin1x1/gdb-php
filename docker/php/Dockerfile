@@ -16,12 +16,16 @@ RUN apt-get update \
         libxml2-dev \
         libssl-dev \
         libsqlite3-dev \
+        systemtap \
+        systemtap-sdt-dev \
         strace \
         procps \
         vim \
         python3 \
         wget \
-        gdb
+        gdb \
+        bpfcc-tools \
+        bpftrace
 
 COPY ./gdb/local-gdbinit /root/.local_gdbinit
 COPY ./gdb/.gdbinit.d /root/.gdbinit.d
