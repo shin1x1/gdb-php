@@ -15,3 +15,8 @@ jobs:
       - run: make dump-opcode
       - run: make dump-opcode-optimized
 
+      - name: Check the USDT probe in php-fpm
+        run: |
+          docker compose run --rm php-fpm tplist-bpfcc -l /php-src/php/sbin/php-fpm | grep php:request__startup
+          
+
