@@ -58,6 +58,10 @@ dump-opcode-optimized:
 dump-ast:
 	@docker compose run --rm php-fpm /php-src/php/bin/php -d extension=ast.so -r 'require "/php-src/php/lib/php/doc/ast/util.php"; echo ast_dump(ast\parse_file("/app/index.php", 100)), PHP_EOL;'
 
-.PHONY: clean
-clean:
+.PHONY: down
+down:
 	@docker compose down -v
+
+.PHONY: clean
+clean: down
+	rm -rf php-src
