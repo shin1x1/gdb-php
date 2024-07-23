@@ -24,6 +24,7 @@ RUN apt-get update \
         python3 \
         wget \
         gdb \
+        linux-perf \
         bpfcc-tools \
         bpftrace
 
