@@ -9,6 +9,7 @@ RUN apt-get update \
         re2c \
         pkg-config \
         git \
+        unzip \
         libfcgi-bin \
         zlib1g-dev \
         libzip-dev \
@@ -39,3 +40,4 @@ RUN wget -P ~ https://github.com/cyrus-and/gdb-dashboard/raw/master/.gdbinit \
 
 RUN echo 'export PATH=/php-src/php/bin:/php-src/php/sbin:$PATH' >> ~/.bashrc
 
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
