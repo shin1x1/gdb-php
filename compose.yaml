@@ -17,6 +17,12 @@ services:
     environment:
       CONFIGURE_OPTIONS: ${CONFIGURE_OPTIONS}
       USE_ZEND_DTRACE: 1
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_SERVICE_NAME: App
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+      OTEL_PROPAGATORS: baggage,tracecontext
     working_dir: /php-src
     command: /php-src/php/sbin/php-fpm
     cap_add:
@@ -29,6 +35,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: app
+  jaeger:
+    image: jaegertracing/all-in-one
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - 16686:16686
 volumes:
   mysql_data:
 

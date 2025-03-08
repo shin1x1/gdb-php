@@ -23,7 +23,7 @@ build-php:
 
 .PHONY: build-ext
 build-ext:
-	@docker compose run --rm php-fpm /php-src/php/bin/pecl install ast
+	@docker compose run --rm php-fpm /php-src/php/bin/pecl install ast opentelemetry protobuf xdebug
 
 .PHONY: gdb-php-fpm
 gdb-php-fpm:
